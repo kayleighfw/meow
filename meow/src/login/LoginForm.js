@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from "lit"; 
 
 export class LoginForm extends LitElement {
   static styles = css`
@@ -7,23 +7,120 @@ export class LoginForm extends LitElement {
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: white;
+      width: 100%;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #161716ff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cirkelvormige "figuren" */
+    :host::before,
+    :host::after,
+    .circle1,
+    .circle2,
+    .circle3,
+    .circle4,
+    .circle5,
+    .circle6 {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+
+    :host::before {
+      width: 200px;
+      height: 200px;
+      background: #ffffff;
+      top: 20%;
+      left: 10%;
+    }
+
+    :host::after {
+      width: 400px;
+      height: 400px;
+      background: #cccccc;
+      bottom: -100px;
+      right: -100px;
+    }
+
+    .circle1 {
+      width: 150px;
+      height: 150px;
+      background: #6c3737ff;
+      top: 10%;
+      right: 20%;
+    }
+
+    .circle2 {
+      width: 250px;
+      height: 250px;
+      background: #161716ff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .circle3 {
+      width: 100px;
+      height: 100px;
+      background: #6c3737ff;
+      bottom: 20%;
+      left: 30%;
+    }
+
+    .circle4 {
+      width: 180px;
+      height: 180px;
+      background: #6c3737ff;
+      top: 60%;
+      right: 10%;
+    }
+
+    .circle5 {
+      width: 120px;
+      height: 120px;
+      background: #6c3737ff;
+      bottom: 10%;
+      right: 30%;
+    }
+
+    .circle6 {
+      width: 200px;
+      height: 200px;
+      background: #6c3737ff;
+      top: 30%;
+      left: 15%;
+    }
+
+    /* Golven onderaan */
+    :host .waves {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(210, 207, 207, 0.95),
+        transparent 70%
+      );
     }
 
     form {
-      position: relative; /* position relative om button absoluut te positioneren */
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       background: linear-gradient(140deg, #3a3a3a, #040404ff, #5b5656ff);
       padding: 40px 30px;
       border-radius: 40px;
-      box-shadow: 0 8px 10px rgba(51, 49, 49, 0.8);
+      box-shadow: 0 8px 10px rgba(70, 69, 69, 0.8);
       width: 350px;
       color: #f0f0f0;
       height: 300px;
       transition: transform 0.2s ease-in-out;
+      z-index: 1; /* Zorgt dat formulier boven cirkels staat */
     }
 
     form:hover {
@@ -62,9 +159,9 @@ export class LoginForm extends LitElement {
     }
 
     button {
-      position: absolute; /* absoluut tov form */
-      top: 380px;       /* afstand vanaf onderkant form */
-      left: 50%;          /* horizontaal centreren */
+      position: absolute;
+      top: 380px;
+      left: 50%;
       transform: translateX(-50%);
       padding: 12px 20px;
       border: none;
@@ -79,7 +176,7 @@ export class LoginForm extends LitElement {
       width: 250px;
       box-shadow: 0 1px 10px rgba(10, 49, 49, 0.8);
       height: 45px;
-
+      z-index: 2; /* Boven formulier */
     }
 
     button:hover {
@@ -96,6 +193,13 @@ export class LoginForm extends LitElement {
 
   render() {
     return html`
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+      <div class="circle6"></div>
+
       <form @submit=${this.handleSubmit}>
         <h2>Login</h2>
         <div class="error" id="error"></div>
