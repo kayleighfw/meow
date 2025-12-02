@@ -9,8 +9,190 @@
     <script type="module" src="/src/my-element.js"></script>
   </head>
   <body>
-    <my-element>
-      <h1>Vite + Lit</h1>
-    </my-element>
-  </body>
+  <header>
+    <div class="title">TIEDRAGON</div>
+    <a class="profile" href="../login/login.html">Profiel</a>
+  </header>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li class="active"><a href="#">Dashboard</a></li>
+          <li><a href="#">Alle Incidenten</a></li>
+          <li><a href="#">Nieuw Incident</a></li>
+          <li><a href="#">Statistieken</a></li>
+          <li><a href="#">Instellingen</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>Incidenten Overzicht</h1>
+        <p>Beheer en volg alle incidenten</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🚨</div>
+          <h3>Totaal Incidenten</h3>
+          <p class="stat-number">45</p>
+        </div>
+        <div class="stat-card high">
+          <div class="stat-icon">🔴</div>
+          <h3>Hoge Prioriteit</h3>
+          <p class="stat-number">7</p>
+        </div>
+        <div class="stat-card medium">
+          <div class="stat-icon">🟡</div>
+          <h3>In Behandeling</h3>
+          <p class="stat-number">15</p>
+        </div>
+        <div class="stat-card low">
+          <div class="stat-icon">✅</div>
+          <h3>Opgelost</h3>
+          <p class="stat-number">23</p>
+        </div>
+      </div>
+
+      <div class="incidents-section">
+        <div class="section-header">
+          <h2>Recente Incidenten</h2>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Alle</button>
+            <button class="filter-btn" data-filter="ongeluk">🚗 Ongelukken</button>
+            <button class="filter-btn" data-filter="file">🚦 Files</button>
+            <button class="filter-btn" data-filter="schietincident">🔫 Schietincidenten</button>
+          </div>
+        </div>
+
+        <div class="incidents-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Locatie</th>
+                <th>Status</th>
+                <th>Prioriteit</th>
+                <th>Datum</th>
+                <th>Toegewezen aan</th>
+                <th>Actie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="incident-row" data-type="schietincident">
+                <td>#001</td>
+                <td><span class="type-badge type-shooting">🔫 Schietincident</span></td>
+                <td>Kalverstraat 123, Amsterdam</td>
+                <td><span class="status-badge status-open">Open</span></td>
+                <td><span class="priority-badge priority-high">Hoog</span></td>
+                <td>02-12-2025 10:30</td>
+                <td>Team Alpha</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="ongeluk">
+                <td>#002</td>
+                <td><span class="type-badge type-accident">🚗 Ongeluk</span></td>
+                <td>A2 KM 45, richting Utrecht</td>
+                <td><span class="status-badge status-progress">In Behandeling</span></td>
+                <td><span class="priority-badge priority-high">Hoog</span></td>
+                <td>02-12-2025 09:15</td>
+                <td>Team Bravo</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="file">
+                <td>#003</td>
+                <td><span class="type-badge type-traffic">🚦 File</span></td>
+                <td>Ring A10, Zuidoost</td>
+                <td><span class="status-badge status-progress">In Behandeling</span></td>
+                <td><span class="priority-badge priority-medium">Gemiddeld</span></td>
+                <td>02-12-2025 08:45</td>
+                <td>Verkeersleiding</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="ongeluk">
+                <td>#004</td>
+                <td><span class="type-badge type-accident">🚗 Ongeluk</span></td>
+                <td>Hoofdstraat 89, Rotterdam</td>
+                <td><span class="status-badge status-resolved">Opgelost</span></td>
+                <td><span class="priority-badge priority-low">Laag</span></td>
+                <td>01-12-2025 14:20</td>
+                <td>Team Charlie</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="file">
+                <td>#005</td>
+                <td><span class="type-badge type-traffic">🚦 File</span></td>
+                <td>A4 KM 12, richting Den Haag</td>
+                <td><span class="status-badge status-open">Open</span></td>
+                <td><span class="priority-badge priority-medium">Gemiddeld</span></td>
+                <td>01-12-2025 11:30</td>
+                <td>Verkeersleiding</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="schietincident">
+                <td>#006</td>
+                <td><span class="type-badge type-shooting">🔫 Schietincident</span></td>
+                <td>Stationsplein 5, Utrecht</td>
+                <td><span class="status-badge status-resolved">Opgelost</span></td>
+                <td><span class="priority-badge priority-high">Hoog</span></td>
+                <td>30-11-2025 17:00</td>
+                <td>Team Delta</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="ongeluk">
+                <td>#007</td>
+                <td><span class="type-badge type-accident">🚗 Ongeluk</span></td>
+                <td>Binnenwegplein, Rotterdam</td>
+                <td><span class="status-badge status-progress">In Behandeling</span></td>
+                <td><span class="priority-badge priority-medium">Gemiddeld</span></td>
+                <td>30-11-2025 15:30</td>
+                <td>Team Echo</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+              <tr class="incident-row" data-type="file">
+                <td>#008</td>
+                <td><span class="type-badge type-traffic">🚦 File</span></td>
+                <td>A1 KM 78, bij Amersfoort</td>
+                <td><span class="status-badge status-resolved">Opgelost</span></td>
+                <td><span class="priority-badge priority-low">Laag</span></td>
+                <td>30-11-2025 13:00</td>
+                <td>Verkeersleiding</td>
+                <td><button class="action-btn">Bekijk</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Filter functionaliteit
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const incidentRows = document.querySelectorAll('.incident-row');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        // Filter rows
+        incidentRows.forEach(row => {
+          if (filter === 'all') {
+            row.style.display = '';
+          } else {
+            const rowType = row.getAttribute('data-type');
+            row.style.display = rowType === filter ? '' : 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>
