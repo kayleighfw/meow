@@ -6,5 +6,9 @@
   {
     "name": "halloooo",
     "password": "halloooo"
+  },
+  {
+    "name": "hey",
+    "password": "$2b$10$Nh9/RDHietWFEE2hDbKDAuxAGAmx9PEjNtxMym0LNra0p6OPYrBqW"
   }
 ]
