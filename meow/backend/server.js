@@ -9,6 +9,14 @@ app.use(cors());
 
 const USERS_FILE = "users.json";
 
+// Zorg dat users.json bestaat en bevat de admin user in plaintext als eerste run
+if (!fs.existsSync(USERS_FILE)) {
+  fs.writeFileSync(
+    USERS_FILE,
+    JSON.stringify([{ name: "admin", password: "admin123" }], null, 2)
+  );
+}
+
 // POST /api/login
 app.post("/api/login", async (req, res) => {
   const { name, password } = req.body;
@@ -17,29 +25,32 @@ app.post("/api/login", async (req, res) => {
     return res.json({ success: false, error: "Naam en wachtwoord zijn verplicht" });
   }
 
-  // Haal bestaande users op
-  const users = fs.existsSync(USERS_FILE)
-    ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
-    : [];
+  // Lees gebruikers
+  const users = JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 
-  // Check of user bestaat
-  const exists = users.find(u => u.name === name);
-  if (exists) {
-    return res.json({ success: false, error: "Gebruiker bestaat al!" });
+  const user = users.find(u => u.name === name);
+  if (!user) {
+    return res.json({ success: false, error: "Gebruiker niet gevonden" });
   }
 
-  // Hash het wachtwoord (10 salt rounds)
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // Check of wachtwoord al gehashed is (bcrypt hashes beginnen met $2b$ of $2a$)
+  if (user.password.startsWith("$2")) {
+    // Vergelijk gehashed wachtwoord
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) return res.json({ success: false, error: "Wachtwoord ongeldig" });
+  } else {
+    // Nog plaintext: check gelijkheid en hash het daarna
+    if (user.password !== password) {
+      return res.json({ success: false, error: "Wachtwoord ongeldig" });
+    }
+    // Hash en sla op
+    const hashed = await bcrypt.hash(password, 10);
+    user.password = hashed;
+    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+    console.log("Wachtwoord gehashed en opgeslagen in users.json");
+  }
 
-  // Voeg nieuwe user toe
-  users.push({
-    name,
-    password: hashedPassword
-  });
-
-  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
-
-  res.json({ success: true });
+  res.json({ success: true, user: { name: user.name } });
 });
 
-app.listen(3000, () => console.log("Server is gestart op http://localhost:3000"));
+app.listen(3000, () => console.log("Server gestart op http://localhost:3000"));
