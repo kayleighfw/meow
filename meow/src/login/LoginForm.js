@@ -236,7 +236,7 @@ export class LoginForm extends LitElement {
 
       if (result.success) {
         errorDiv.textContent = "";
-        alert("Inloggen geslaagd!");
+  
         if (window.showPage) window.showPage("dashboard");
       } else {
         errorDiv.textContent = result.error;

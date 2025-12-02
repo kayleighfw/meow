@@ -77,7 +77,7 @@ export class StatCard extends LitElement {
     .stat-number {
       font-size: 36px;
       font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: white;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;

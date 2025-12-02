@@ -40,7 +40,7 @@ export class DashboardPage extends LitElement {
     :host {
       display: block;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      background: #1e2425ff;
       height: 100vh;
       overflow: hidden;
     }
@@ -63,7 +63,7 @@ export class DashboardPage extends LitElement {
     .welcome-section {
       margin-bottom: 30px;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(135deg, #1e2425ff, #141b1dff, #131f24ff);
       border-radius: 15px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
@@ -74,7 +74,7 @@ export class DashboardPage extends LitElement {
       color: #fff;
       margin-bottom: 10px;
       font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: white;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -93,7 +93,7 @@ export class DashboardPage extends LitElement {
     }
 
     .recent-activity {
-      background: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(135deg, #1e2425ff, #141b1dff, #131f24ff);
       padding: 25px;
       border-radius: 15px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);

@@ -1,14 +1,14 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 // View Component: Dashboard Header
 export class DashboardHeader extends LitElement {
   static properties = {
-    username: { type: String }
+    username: { type: String },
   };
 
   constructor() {
     super();
-    this.username = 'Gebruiker';
+    this.username = "Gebruiker";
   }
 
   static styles = css`
@@ -16,7 +16,7 @@ export class DashboardHeader extends LitElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #1e2425ff, #141b1dff, #131f24ff);
       color: white;
       width: 100%;
       height: 70px;
@@ -54,7 +54,7 @@ export class DashboardHeader extends LitElement {
   `;
 
   handleLogout() {
-    this.dispatchEvent(new CustomEvent('logout'));
+    this.dispatchEvent(new CustomEvent("logout"));
   }
 
   render() {
@@ -69,4 +69,4 @@ export class DashboardHeader extends LitElement {
   }
 }
 
-customElements.define('dashboard-header', DashboardHeader);
+customElements.define("dashboard-header", DashboardHeader);

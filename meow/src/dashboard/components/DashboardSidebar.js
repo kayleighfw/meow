@@ -14,7 +14,7 @@ export class DashboardSidebar extends LitElement {
   static styles = css`
     .sidebar {
       width: 260px;
-      background: rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #1e2425ff, #141b1dff, #131f24ff);
       color: white;
       padding: 30px 0;
       height: 100%;
@@ -78,9 +78,7 @@ export class DashboardSidebar extends LitElement {
             <li class="${this.activeItem === 'reports' ? 'active' : ''}">
               <a @click=${() => this.handleNavigation('reports')}>Rapporten</a>
             </li>
-            <li class="${this.activeItem === 'settings' ? 'active' : ''}">
-              <a @click=${() => this.handleNavigation('settings')}>Instellingen</a>
-            </li>
+           
           </ul>
         </nav>
       </div>
